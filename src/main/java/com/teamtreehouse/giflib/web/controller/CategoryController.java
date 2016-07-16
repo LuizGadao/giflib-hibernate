@@ -21,7 +21,6 @@ public class CategoryController {
     @SuppressWarnings("unchecked")
     @RequestMapping("/categories")
     public String listCategories(Model model) {
-        // TODO: Get all categories
         List<Category> categories = categoryService.findAll();
         model.addAttribute("categories", categories);
         return "category/index";
@@ -64,11 +63,9 @@ public class CategoryController {
 
     // Add a category
     @RequestMapping(value = "/categories", method = RequestMethod.POST)
-    public String addCategory() {
-        // TODO: Add category if valid data was received
-
-        // TODO: Redirect browser to /categories
-        return null;
+    public String addCategory(Category category) {
+        categoryService.save(category);
+        return "redirect:/categories";
     }
 
     // Delete an existing category
